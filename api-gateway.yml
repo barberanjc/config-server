@@ -13,10 +13,12 @@ spring:
          
 
       routes:
-        - id: user-service
+        - id: user-service-registro
           uri: lb://user-service
           predicates:
-            - Path=/api/usuarios/**
+            - Path=/registro
+          filters:
+            - RewritePath=/registro, /api/usuarios/registro
             
         - id: auth-service
           uri: lb://auth-service
